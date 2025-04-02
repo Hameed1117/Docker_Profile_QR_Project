@@ -49,7 +49,7 @@ docker run -d --name qr-generator \
   YOUR_DOCKERHUB_USERNAME/qr-code-generator:latest
 ```
 
-## Assignment Requirements
+## Fullfilling Requirements
 
 - [x] Set up GitHub Actions workflow
 - [x] Configure automated testing
