@@ -63,3 +63,20 @@ This project fulfills the requirements of creating a Docker container that:
 2. Uses environment variables for customization
 3. Uses volume mounting to access the generated QR code
 4. Provides proper logging of the process
+
+
+
+---
+
+## CI/CD Pipeline
+
+For the CI/CD Pipeline implementation, please check the `ci-cd-assignment` branch of this repository. That branch contains:
+
+- GitHub Actions workflow for automating Docker builds
+- Docker Hub integration
+- Separate README detailing the CI/CD implementation
+
+You can switch to that branch with:
+```bash
+git checkout ci-cd-assignment
+```
