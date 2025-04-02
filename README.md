@@ -56,7 +56,7 @@ The project uses:
 - Docker to containerize the application
 - Volume mounting to access generated QR codes
 
-## Assignment Requirements
+## FullFilling Requirements
 
 This project fulfills the requirements of creating a Docker container that:
 1. Generates a QR code linking to a GitHub profile
