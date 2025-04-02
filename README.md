@@ -1,65 +1,58 @@
-# Docker QR Code Generator Project
+# Docker CI/CD Pipeline Assignment
 
-This project combines Docker with Python to create a containerized application that generates a QR code for a GitHub profile URL. When scanned with a mobile device, the QR code will direct users to the specified GitHub profile.
+This assignment implements a CI/CD workflow using GitHub Actions to automatically build and push a Docker image to Docker Hub.
 
-## Project Components
+## Overview
 
-- Python script using the `qrcode` library to generate QR codes
-- Docker containerization for easy deployment and execution
-- Environment variables for customization
+This repository contains a QR code generator that:
+1. Creates a QR code for a GitHub profile URL
+2. Is packaged as a Docker container
+3. Uses GitHub Actions for CI/CD pipeline
 
-## QR Code to My GitHub Profile
+## CI/CD Pipeline Implementation
 
-![GitHub QR Code](qr_codes/github_qr.png)
+The GitHub Actions workflow in this repository:
+1. Automatically runs when code is pushed to the repository
+2. Tests the Python code to ensure it works properly 
+3. Builds a Docker image from the Dockerfile
+4. Pushes the image to Docker Hub with appropriate tags
 
-## Docker Build and Run Log
+## Docker Hub Image
 
-![Docker Logs Screenshot](docker_logs.png)
+![Docker Hub Screenshot](dockerhub_screenshot.png)
 
-## How to Use
+## Setup Process
 
-### Build the Docker image:
+1. Created a Docker Hub account and access token
+2. Added repository secrets for Docker Hub credentials
+3. Created a GitHub Actions workflow file (.github/workflows/docker-image.yml)
+4. Configured the workflow to test, build, and push the image
+
+## Workflow File Details
+
+The workflow file includes two jobs:
+- `test`: Verifies that the Python code and dependencies work
+- `build-and-push`: Builds and pushes the Docker image to Docker Hub
+
+## How to Use the Docker Image
+
+Pull the image from Docker Hub:
 ```bash
-docker build -t my-qr-app .
+docker pull YOUR_DOCKERHUB_USERNAME/qr-code-generator:latest
 ```
 
-### Run the container with default settings:
-```bash
-docker run -d --name qr-generator my-qr-app
-```
-
-### Run with custom GitHub URL:
+Run the container:
 ```bash
 docker run -d --name qr-generator \
-  -e QR_DATA_URL="https://github.com/Hameed1117" \
+  -e QR_DATA_URL="https://github.com/YOUR_GITHUB_USERNAME" \
   -v "$(pwd)/qr_codes:/app/qr_codes" \
-  my-qr-app
+  YOUR_DOCKERHUB_USERNAME/qr-code-generator:latest
 ```
 
-### Customization Options:
-You can customize the QR code generation using these environment variables:
-- `QR_DATA_URL`: The URL the QR code will point to (default: your GitHub)
-- `QR_CODE_DIR`: Directory to store QR codes (default: 'qr_codes')
-- `QR_CODE_FILENAME`: Filename for the QR code (default: 'github_qr.png')
-- `FILL_COLOR`: Color of the QR code (default: 'black')
-- `BACK_COLOR`: Background color (default: 'white')
+## Assignment Requirements
 
-### View logs:
-```bash
-docker logs qr-generator
-```
-
-## Implementation Details
-
-The project uses:
-- Python 3.9 with the qrcode[pil] library
-- Docker to containerize the application
-- Volume mounting to access generated QR codes
-
-## FullFilling Requirements
-
-This project fulfills the requirements of creating a Docker container that:
-1. Generates a QR code linking to a GitHub profile
-2. Uses environment variables for customization
-3. Uses volume mounting to access the generated QR code
-4. Provides proper logging of the process
+- [x] Set up GitHub Actions workflow
+- [x] Configure automated testing
+- [x] Build Docker image on successful tests
+- [x] Push image to Docker Hub
+- [x] Add screenshot of Docker Hub repository
